@@ -1,0 +1,78 @@
+.slider-container {
+    position: relative;
+    width: 100%;
+}
+
+.full-screen-swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.full-screen-image {
+    width: 100%;
+    height: 100%;
+}
+.full-screen-video {
+    width: 100%;
+    height: 100%;
+}
+
+.indicator-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    color:#888;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0 5px;
+    /* border-radius: 2px; */
+    border:1px solid rgb(255, 255, 255);
+}
+
+.indicator.active {
+    background-color: #fff;
+}    
+
+.swipeson{position: relative;}
+.des{position: absolute;bottom:160rpx;left:60rpx;background-color: rgba(243,152,0, 0.25);width: 430rpx;height: 240rpx;
+    transform: translateY(300%);
+    box-sizing: border-box;
+    padding: 10rpx;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.des .first{
+    font-size: 20rpx;
+    color: white;
+    margin: 10rpx 0 20rpx;
+}
+.des .main{
+    font-weight: bold;
+    font-family: 'fzqk';
+    font-size: 60rpx;
+    color: rgb(243,152,0);
+    margin: 15rpx 0;
+    letter-spacing: 15rpx;
+}
+.riseup { /* 新增激活类 */
+    animation: riseUp 0.8s ease-out forwards;
+}
+
+@keyframes riseUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

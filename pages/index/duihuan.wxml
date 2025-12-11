@@ -1,0 +1,7 @@
+
+<view class="topbar" style="height: {{menuheight}}px;background-color: {{barcolor}};">
+	<image class="weui-navigation-bar__btn_goback back" src="/static/imgs/back.png" bind:tap="back" mode="" />
+</view>
+<view  style="margin-top: {{menuheight-60}}px;">
+	<image style="width: 100%;" src="https://a.zjglsw.com/i/HK/imgs/duihuan.jpg?1" mode="widthFix"/>
+</view>

@@ -1,0 +1,49 @@
+{
+  "setting": {
+    "compileHotReLoad": true,
+    "urlCheck": true,
+    "coverView": true,
+    "lazyloadPlaceholderEnable": false,
+    "skylineRenderEnable": false,
+    "preloadBackgroundData": false,
+    "autoAudits": false,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "showShadowRootInWxmlPanel": true,
+    "useStaticServer": false,
+    "useLanDebug": false,
+    "showES6CompileOption": false,
+    "checkInvalidKey": true,
+    "ignoreDevUnusedFiles": true,
+    "bigPackageSizeSupport": false
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "扫码首页",
+          "pathName": "pages/index/index",
+          "query": "bid=5&code=LATL4XUGIf",
+          "scene": null,
+          "launchMode": "default"
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "home=1",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/prods/prodlist",
+          "pathName": "pages/prods/prodinfo",
+          "query": "pid=1",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "libVersion": "3.7.12",
+  "projectname": "HK"
+}

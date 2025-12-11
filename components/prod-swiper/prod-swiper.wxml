@@ -1,0 +1,39 @@
+<view class="slider-container" bindtap="tapImage">
+    <swiper
+        class="full-screen-swiper"
+        indicator-dots="{{false}}"
+        autoplay="{{autoplay}}"
+        interval="{{interval}}"
+        duration="{{duration}}"
+        circular
+        bindchange="changeIndicatorDots"
+    >
+        <block wx:for="{{images}}" wx:key="*this">
+            <swiper-item>
+                <block wx:if="{{item.type=='img'}}">
+                    <image
+                        src="{{imgpre}}{{item.value}}"
+                        mode="aspectFill"
+                        class="full-screen-image"
+                        data-index="{{index}}"
+                    ></image>
+                </block>
+                <block wx:if="{{item.type=='video'}}">
+                    <video class="full-screen-video"  autoplay="{{index=='0'}}" id="video-{{index}}"  loop="true" controls="{{false}}" src="{{imgpre}}{{item.value}}"/>
+                </block>
+            </swiper-item>
+        </block>
+    </swiper>
+    
+    <view class="product-info">
+    <text class="product-type">{{des}}</text>
+    <text class="product-name">{{title}}</text>
+    </view>
+    <view class="indicator-container" hidden="{{images.length<2}}">
+        <block wx:for="{{images}}" wx:key="*this" wx:for-index="idx">
+            <view
+                class="{{idx === currentIndex? 'indicator active' : 'indicator'}}"
+            ></view>
+        </block>
+    </view>
+</view>    

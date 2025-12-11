@@ -1,0 +1,117 @@
+<!--index.wxml-->
+<view class="loadingbox" hidden="{{!loading}}">
+  <image class="loadimg" src="https://a.zjglsw.com/i/HK/imgs/loading.jpg" mode="widthFix"/>
+</view>
+
+<view class="topbar" style="height: {{menuheight}}px;background-color: {{barcolor}};">
+  <!-- <image class="weui-navigation-bar__btn_goback" src="/static/imgs/back.png" bind:tap="back" mode=""/> -->
+  <view class="title" style="margin-top:{{menutop}}px">
+  <image class="logo" src="{{imgpre}}{{setinfo.toplogo}}" mode="heightFix"/>
+  </view>
+</view>
+<scroll-view class="scrollarea" scroll-y type="list" style="margin-top: {{menuheight}}px;">
+  <full-swiper images="{{bookinfo.swiperitem}}" topdes="{{bookinfo.topdes}}"></full-swiper>
+  <view class="menus">
+    <view class="menu" bind:tap="duihuan" wx:if="{{code}}">
+      <image src="/static/imgs/duihuan.png" mode="widthFix"/>
+      <text>兑换须知</text>
+    </view>
+    <view class="menu" bind:tap="scan" wx:else>
+      <image src="/static/imgs/duihuan.png" mode="widthFix"/>
+      <text>兑换区</text>
+    </view>
+    <view class="menu" bind:tap="duihuan" wx:if="{{!code}}">
+      <image src="/static/imgs/fenlei.png" mode="widthFix"/>
+      <text>兑换须知</text>
+    </view>
+    <view class="menu" bind:tap="kefu">
+      <image src="/static/imgs/kefu.png" mode="widthFix"/>
+      <text>客服</text>
+      </view>
+  </view>
+
+  <view wx:for="{{bookinfo.bottomimg}}" wx:key="item" wx:if="{{code==''}}">
+  <image class="btmimg" src="{{imgpre}}{{item}}" mode="widthFix"/>
+  </view>
+
+  
+  <block wx:for="{{topiclist}}" wx:key="index" wx:if="{{code==''}}">
+    <view bind:tap="gotolink" data-index="{{index}}" wx:if="{{item.ttype=='0'}}">
+      <prods title="{{item.name}}" topImageSrc="{{item.swiperitem}}"></prods>
+    </view>
+
+    <block  wx:if="{{item.ttype=='1'}}">
+      
+    <view bind:tap="gotolink" data-index="{{index}}" class="product-item"  wx:if="{{item.swiperitem.length>1}}">
+      <prod-swiper images="{{item.swiperitem}}" des="{{item.des}}" title="{{item.name}}"></prod-swiper>
+    </view>
+    
+    <view data-index="{{index}}" class="product-item"  wx:if="{{item.swiperitem.length==1}}">
+      <block wx:if="{{item.linktype==0}}">
+        <image bind:tap="showbig" class="singleimg" src="{{imgpre}}{{item.swiperitem[0].value}}" data-src="{{imgpre}}{{item.swiperitem[0].value}}" mode="widthFix"/>
+      </block>
+      <block wx:else="">
+        <image bind:tap="gotolink" data-index="{{index}}" class="singleimg" src="{{imgpre}}{{item.swiperitem[0].value}}" mode="widthFix"/>
+      </block>
+    </view>
+    </block>
+
+    <view bind:tap="gotolink" data-index="{{index}}" wx:if="{{item.ttype=='2'}}" class="bottom-button">{{item.name}}</view>
+  </block>
+
+  <view class="typecon" wx:for="{{bookinfo.typelist}}" wx:key="index" wx:if="{{code!=''}}" style="margin:.5rem .5rem;">
+    <view class="typeson" bind:tap="gototype" data-tid="{{item.tid}}"  style="flex-direction: {{index%2==1?'row':'row-reverse'}};display: flex;width: 90%;margin-left: 5%;background-color: rgb(196, 196, 196);box-sizing: border-box;padding:1rem 2rem;border-radius: 1rem;">
+      <view class="word" style="width: 60%;text-align: center;display: flex;flex-direction: column;justify-content: center;">
+        <view style="color: white;font-weight: bold;font-size: 60rpx;letter-spacing: 10rpx;">{{item.tname}}</view>
+        <view style="color: white;font-size:16rpx;letter-spacing: 8rpx;margin: 15rpx 0;">百年英伦·轻奢品质</view>
+        <view style="color: white;font-weight: bold;font-size: 25rpx;background-color: rgb(83, 83, 83);padding: 6rpx 0;">点击兑换</view>
+      </view>
+      <view class="img" style="width: 30%;margin:0 5%">
+        <image style="width: 100%;height:auto;" src="{{imgpre}}{{item.imgs}}" mode="widthFix"/>
+      </view>
+    </view>
+  </view>
+
+  <view hidden="{{!showduihuan}}">
+    <image style="width: 100%;" src="https://a.zjglsw.com/i/HK/imgs/duihuan.jpg?1" mode="widthFix"/>
+  </view>
+
+</scroll-view>
+
+<view class="floatbtn draggable" hidden="{{!floatshow}}" style="right:{{right}}px;bottom:{{bottom}}px;"  bindtouchmove="onTouchMove" bindtouchstart="onTouchStart" bindtap="scan" >
+  <image class="fltimg" src="https://a.zjglsw.com/i/HK/imgs/floatbtn.png" mode="widthFix"/>
+</view>
+
+
+<!-- 自定义弹框 -->
+<view wx:if="{{showModal}}" class="modal kefu">
+    <view class="modal-content">
+      <view class="modal-header">
+        <text>{{modalContent.title}}</text>
+      </view>
+      <view class="modal-body">
+        <text>电话：{{setinfo.kefu}}</text>
+        <image 	show-menu-by-longpress="true" src="{{modalContent.imageUrl}}" class="modal-image" mode="widthFix"></image>
+        <view>扫码添加客服微信</view>
+      </view>
+      <view class="modal-footer">
+        <button class="modal-btn" bindtap="hideModal">关闭</button>
+      </view>
+    </view>
+  </view>
+
+
+
+<!-- 
+  <view class="bottom-button">尊享包装</view>
+
+  <view class="packbox">
+    <image class="fullimg" bind:tap="showbig" src="{{imgpre}}{{bookinfo.packimg[0]}}" data-src="{{imgpre}}{{bookinfo.packimg[0]}}" mode="widthFix"/>
+    <image class="fullimg" bind:tap="showbig" src="{{imgpre}}{{bookinfo.packimg[4]}}" data-src="{{imgpre}}{{bookinfo.packimg[4]}}" mode="widthFix"/>
+    <textarea class="packdes">
+      <text>{{bookinfo.packimg[5]}}</text>
+    </textarea>
+  </view> -->
+
+
+

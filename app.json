@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/duihuan",
+    "pages/prods/prodlist",
+    "pages/prods/prodinfo",
+    "pages/payment/payment"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "requiredPrivateInfos": [
+    "chooseAddress"
+  ],
+  "usingComponents": {
+  },
+  "lazyCodeLoading": "requiredComponents"
+  
+}

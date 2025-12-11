@@ -1,0 +1,41 @@
+<view class="topbar" style="height: {{menuheight}}px;background-color: white;">
+  <image class="weui-navigation-bar__btn_goback back" src="/static/imgs/back.png" bind:tap="back" mode=""/>
+  <view class="title" style="margin-top:{{menutop}}px">
+  <image class="logo" src="{{imgpre}}{{setinfo.toplogo}}" mode="heightFix"/>
+  </view>
+</view>	
+<view class="container" style="margin-top: {{menuheight}}px;height: calc(100vh - {{menuheight}}px)">
+  <!-- 左侧分类列表 -->
+  <view class="topbox">
+    <view class="searchbox">
+      <input class="searchbar" type="text" placeholder="点击搜索" bindinput="inputsearch" bindconfirm="search"/>
+    </view>
+    <view class="typelistbox">
+      <view class="typeson {{index==chooseindex?'choose':''}}" wx:for="{{categories}}" wx:key="index" data-index="{{index}}" bind:tap="chooseindex">{{item.name}}</view>
+    </view>
+  </view>
+  
+  <!-- 右侧产品列表 -->
+  <scroll-view 
+    class="product-container" 
+    scroll-y="true" 
+    scroll-with-animation="{{true}}" 
+    style="padding-top: 165rpx;"
+  >
+  <view class="product-list" data-searchkey="{{searchkey}}">
+    <block wx:for="{{categories[chooseindex].products}}" wx:key="id" wx:for-index="idx" wx:for-item="product" >
+      <view class="product-item" bind:tap="gotoprod" data-pid="{{product.pid}}" hidden="{{product.hidden}}">
+          <view class="product-image">
+              <image src="{{imgpre}}{{product.pimgs}}" mode="aspectFill"></image>
+          </view>
+          <view class="product-info">
+              <view class="product-new-tag">款号：{{product.pcode}}</view>
+              <!-- <view class="product-name">{{product.comp}}</view> -->
+              <view class="product-price">¥ {{product.price}}</view>
+          </view>
+      </view>
+    </block>
+  </view>
+
+  </scroll-view>
+</view>

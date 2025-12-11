@@ -1,0 +1,36 @@
+<view class="slider-container" style="height: calc(100vh - {{menuheight}}px - 170rpx);">
+    <swiper
+        class="full-screen-swiper"
+        indicator-dots="{{false}}"
+        autoplay="{{autoplay}}"
+        interval="{{interval}}"
+        duration="{{duration}}"
+        circular
+        bindchange="changeIndicatorDots"
+    >
+        <block wx:for="{{images}}" wx:key="idx"  wx:for-index="idx">
+        <swiper-item class="swipeson">
+            <block wx:if="{{item.type=='img'}}">
+                <image
+                    id="sss"
+                    src="{{imgpre}}{{item.value}}"
+                    mode="widthFix"
+                    class="full-screen-image"
+                    data-index="{{index}}"
+                    bindtap="tapImage"
+                    data-bb="{{currentIndex}}"
+                ></image>
+            </block>
+            <block wx:if="{{item.type=='video'}}">
+                <video class="full-screen-video" autoplay="{{idx=='0'}}" id="video-{{idx}}"  loop="true" controls="{{false}}" src="{{imgpre}}{{item.value}}"/>
+            </block>
+            <view class="des {{isActive[idx]}}">
+                <view wx:for="{{topdes[idx]}}" wx:key="index" class="{{index==0?'first':'main'}}">{{item}}</view>
+            </view>
+        </swiper-item>
+        </block>
+    </swiper>
+    <view class="indicator-container">
+        滑动浏览更多
+    </view>
+</view>

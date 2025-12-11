@@ -1,0 +1,39 @@
+<view class="titlecontainer">
+  <!-- 顶部主题 -->
+  <!-- <view class="title">{{title}}</view> -->
+  <!-- 顶部图片区域 -->
+  <view class="top-image">
+    <swiper class="w100" 
+        circular
+        style="height: {{swiperHeight}}px;"
+        bindchange="changeIndicatorDots">
+    <swiper-item wx:for="{{topImageSrc}}" wx:key="idx"  wx:for-index="idx">
+      <block wx:if="{{item.type=='img'}}">
+        <image
+            id="sss"
+            src="{{imgpre}}{{item.value}}"
+            mode="widthFix"
+            class="full-screen-image"
+            bindload="computeImgHeight"
+        ></image>
+      </block>
+      <block wx:if="{{item.type=='video'}}">
+          <video class="full-screen-video" autoplay="{{idx=='0'}}" id="video-{{idx}}"  loop="true" controls="{{false}}" src="{{imgpre}}{{item.value}}"/>
+      </block>
+    </swiper-item>
+    </swiper>
+    <!-- <view class="indicator-container2">
+      滑动浏览更多
+    </view> -->
+  </view>
+  <!-- 商品展示区域 -->
+  <!-- <view class="product-list">
+    <block wx:for="{{productList}}" wx:key="index">
+      <view class="product-item">
+        <prod-swiper images="{{item.imgs}}" des="{{item.tags}}" title="{{item.pname}}" prodId="{{item.pid}}"></prod-swiper>
+      </view>
+    </block>
+  </view> -->
+  <!-- 底部按钮区域 -->
+  <!-- <view class="bottom-button" bind:tap="gotolist" data-lid="">{{buttonText}}</view> -->
+</view>

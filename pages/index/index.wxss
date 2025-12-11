@@ -1,0 +1,76 @@
+/**index.wxss**/
+page {
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+}
+
+.menus{
+  width: 60%;
+  /* height: 135rpx; */
+  margin: 15rpx 20% 15rpx;
+  display: flex;
+}
+
+.menu{
+  width: 180rpx;
+  margin:0 20rpx;
+  flex: 1;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 2rpx;
+  color: #888;
+  gap: 0; /* 明确消除flex间隙 */
+}
+.menu image{
+  width: 80rpx;
+  margin:0 auto;
+  display: block; /* 改为块级元素 */
+  vertical-align: bottom; /* 或设置对齐方式 */
+}
+
+
+
+.btmimg{width: 100%;}
+
+.bottom-button {
+  width: 200rpx;
+  margin:20rpx auto;
+  text-align: center;
+  box-sizing: border-box;
+  padding:5px 5px;
+  justify-content: center;
+  margin-top: 10px;
+  background-color: black;
+  color: white;
+  font-size: 26rpx;
+  letter-spacing: 3rpx;
+}
+
+.product-item {
+  width: 367rpx;
+  /* background-color: #eaeaea; */
+  box-sizing: border-box;
+  display: inline-grid;
+  vertical-align: bottom;
+  margin: 15.5rpx 0;
+}
+.product-item:nth-child(even) {
+  margin-right: 16rpx;
+}
+.singleimg{
+  width: 100%;
+}
+
+.packbox{width: 100%;}
+.packbox .fullimg{width: 100%;display: block;margin-top:-4rpx;}
+.packbox .imglist{width: 100%;display: flex;justify-content: space-between;margin:15rpx 0;}
+.packbox .partimg{width: 32%;display: block;}
+.packbox .packdes{color: rgba(140,140,140);width: 100%;margin: 15rpx 0;line-height: 1.2rem;font-size: 24rpx;}
+
+
+.loadingbox{position: fixed;top:0;left:0;width: 100%;height:100vh;background-color: white;z-index: 999;}
+.loadimg{width: 20%;margin:35vh 40% 0;}
+
+.floatbtn{position: fixed;width: 200rpx;height:200rpx;text-align: center;}
+.floatbtn .fltimg{width: 100%;z-index: 998;}

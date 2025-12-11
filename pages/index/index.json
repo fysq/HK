@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "full-swiper":"/components/full-swiper/full-swiper",
+    "prods":"/components/prods/prods",
+    "prod-swiper":"/components/prod-swiper/prod-swiper"
+  }
+}
