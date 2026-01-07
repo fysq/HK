@@ -29,9 +29,10 @@
               <image src="{{imgpre}}{{product.pimgs}}" mode="aspectFill"></image>
           </view>
           <view class="product-info">
+              <view class="product-new-tag">{{product.tname}}</view>
               <view class="product-new-tag">款号：{{product.pcode}}</view>
               <!-- <view class="product-name">{{product.comp}}</view> -->
-              <view class="product-price">¥ {{product.price}}</view>
+              <!-- <view class="product-price">¥ {{product.price}}</view> -->
           </view>
       </view>
     </block>
